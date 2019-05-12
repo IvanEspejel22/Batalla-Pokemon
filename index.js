@@ -118,7 +118,7 @@ var acero = {
 };
 
 var hada = {
-    nombre: 'acero',
+    nombre: 'hada',
     eficaz: ['lucha', 'dragon', 'siniestro'],
     pocoEficaz: ['fuego', 'veneno', 'acero'],
     noAfecta: [null]
@@ -445,17 +445,11 @@ function turno(turnoJ1, turnoJ2, ataqueJ1) {
         ataqueJugador1(ataqueJ1);
         if (jugador2.hp.hpTotal > 0) {
             ataqueJugador2();
-        } else {
-            contenedor.innerHTML = `<h6>Ganaste</h6>`
-        }
-    } else {
+        
+        }} else {
         ataqueJugador2();
         if (jugador1.hp.hpTotal > 0) {
             ataqueJugador1(ataqueJ1);
-        } else {
-            contenedor.innerHTML = `<h6>Perdiste</h6>`
-            
-            
         }
     }
 }
@@ -468,6 +462,9 @@ function ataqueJugador1(atq) {
     alert(`Player1 ${jugador1.nombre} ha usado ${ataqueJ1.nombre}`) ;
     hpBar2();
     console.log(efecto);
+     if(jugador2.hp.hpTotal <= 0){
+        contenedor.innerHTML = `<h6>Ganaste</h6>`
+    }
 }
 
 function ataqueJugador2() {
@@ -510,6 +507,9 @@ function ataqueJugador2() {
             hpBar1();
             break;
     }
+ if(jugador1.hp.hpTotal <= 0){
+    contenedor.innerHTML = `<h6>Perdiste</h6>`
+}
 }
 
 var efecto = 1;
